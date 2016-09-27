@@ -1,0 +1,249 @@
+#include <stdio.h>
+
+
+AV4_01
+
+int main() {
+int a,b,rez;
+
+	printf("unesite dva cijela broja: ");
+	scanf("%d %d", &a,&b);
+
+	if (a>b)
+	{
+		rez=a%b;
+		printf("ostatak pri djeljenju je: %d", rez);
+	}
+	else if (a==b)
+	{
+		printf("jednaki su");
+	}
+	else
+	{
+		rez=a*b;
+		if (rez>100)
+		{
+			printf( "umnozak je veci od 100");
+		}
+		else if(rez<100)
+		{
+			printf("umnozak je manji od 100");
+		}
+	}
+
+	return 0;
+}
+
+
+AV4_02
+
+#include <stdio.h>
+int main () {
+
+	float a,b,rez;
+	int broj,mod;
+	printf("unesite dva realna broja: \n");
+	scanf("%f %f", &a,&b);
+	
+	printf ("1: zbrajanje\n 2: oduzimanje\n 3: mnozenje\n 4: djeljenje\n 5: modul\n");
+	scanf ("%d" ,&broj);
+
+switch (broj)
+{
+	case 1:
+		rez=a+b;
+		printf ("zbroj dva broja je: %f\n", rez);
+	break;
+
+	case 2:
+		rez=a-b;
+		printf ("razlika dva broja je: %f\n", rez);
+	break;
+
+	case 3:
+		rez=a*b;
+		printf ("umnozak dva broja je: %f\n", rez);
+	break;
+
+	case 4:
+		rez=a/b;
+		printf ("kolicnik dva broja je: %f\n", rez);
+	break;
+
+	case 5:
+		mod=(int)a%(int)b;
+		printf ("modul dva broja je: %d\n", mod);
+	break;
+
+	default:
+		printf( "error");
+}
+
+return 0;
+}
+
+
+AV5_01
+#include <stdio.h>
+int main () {
+
+	int n,i,zbroj=0,oduzimanje=0;
+	float br,prethodni=0,rez=0;
+	
+	printf("unesite broj ponavljanja n:\n");
+	scanf("%d",&n);
+	printf ("unesite zeljene brojeve: \n");
+	for (i=0; i<n; i++)
+	{
+		scanf("%f", &br);
+		
+		if (prethodni==0)
+		{
+			rez=rez+br;
+			zbroj=zbroj+1;
+		}
+		else if(br<=prethodni)
+		{
+			rez=rez-br;
+			oduzimanje=oduzimanje+1;
+		}
+		else if(br>prethodni)
+		{
+			rez=rez+br;
+			zbroj=zbroj+1;
+		}
+		prethodni=br;
+	}
+
+
+	printf ("ukupni rezultat je: %.2f\n", rez);
+	printf ("broj operacija zbrajanja je: %d \n", zbroj);
+	printf ("broj operacija oduzimanja je: %d \n", oduzimanje);
+
+
+	return 0;
+}
+
+AV5_2
+#include <stdio.h>
+int main () {
+	
+	int a,b,c,opseg,t=0,k1,k2;
+	float povrsina;
+	printf("unesite tri stranice trokuta:\n");
+	
+	while (t==0)
+	{
+		scanf("%d %d %d", &a, &b, &c);
+		if (c*c==a*a+b*b)
+		{t=1;k1=a;k2=b;}
+		else if (a*a==c*c+b*b)
+		{t=1;k1=c;k2=b;}
+		else if (b*b==a*a+c*c)
+		{t=1;k1=a;k2=c;}
+	}
+	opseg=a+b+c;
+	printf("opseg trokuta je: %d\n", opseg);
+
+	povrsina=(k1*k2)/2;
+	printf("povrsina trokuta je: %.2f\n", povrsina);
+
+
+	return 0;
+}
+
+
+AV6_01
+#include <stdio.h>
+int main () {
+
+	int p[100],n=0,i,zbroj_neparnih=0,brojac=0;
+	while(n<2 || n>101)
+	{
+		printf("unesite n broj polja:\n");
+		scanf("%d",&n);
+	}
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&p[i]);
+	}
+	for(i=0;i<n;i++)
+	{
+		if(p[i]%2==0)
+		{
+			printf("Paran broj je : %d ",p[i]);
+		}
+		else
+		{
+			zbroj_neparnih=zbroj_neparnih+p[i];
+			brojac++; //broji koliko ima neparnih brojeva
+		}
+	}
+	printf("Zbroj neparnih brojeva je: %d\n",zbroj_neparnih);
+	printf("Srednja vrijednost neparnih brojeva je: %f\n",(float)zbroj_neparnih/(float)brojac);
+
+	return 0;
+}
+
+
+AV6_02
+
+#include <stdio.h>
+int main () {
+
+	int n=0,i,brojac=0;
+	float p[50],max,min,sr,zbroj=0;
+
+	while (n<9 || n>51)
+	{
+		printf ("unesite n broj elemenata: \n");
+		scanf ("%d", &n);
+	}
+	for (i=0;i<n;i++) 
+	{
+		scanf("%f",&p[i]);
+	}
+	
+	max=-999999999999;
+	min=9999999999999;
+
+	for(i=0;i<n;i++)
+	{
+		if(p[i]>max)
+		{
+			max=p[i];
+		}
+		if(p[i]<min)
+		{
+			min=p[i];
+		}
+		zbroj=zbroj+p[i];
+	}
+
+	printf("Najveci broj je: %f, a najmanji: %f\n",max,min);
+	sr=zbroj/n;
+	printf("Srednja vrijednost je: %.2f\n",sr);
+	printf("Brojevi koji su manji od srednje vrijednosti: ");
+	for(i=0;i<n;i++)
+	{
+		if(p[i]<sr)
+		{
+			printf("%f ",p[i]);
+			brojac++;
+		}
+	}
+	printf(" i ima ih %d\n",brojac);
+	brojac=0;
+	printf("Brojevi koji su veci od srednje vrijednosti: ");
+	for(i=0;i<n;i++)
+	{
+		if(p[i]>sr)
+		{
+			printf("%f ",p[i]);
+			brojac++;
+		}
+	}
+	printf(" i ima ih %d \n",brojac);	
+	
+	return 0;
+}

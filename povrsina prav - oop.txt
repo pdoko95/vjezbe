@@ -1,0 +1,39 @@
+//Izracunaj povrsinu tri pravokutnika i pronadji najveci pravokutnik
+
+#include <stdio.h>
+#include <string.h>
+class Pravokutnik{
+float a,b;
+public:
+float geta(){return a;}
+float getb() {return b;}
+void setStr(float aa,float bb) {a=aa; b=bb;}
+float Povrsina()
+{ return a*b;}
+float Opseg()
+{ return 2*(a+b);}
+};
+int main ()
+{
+Pravokutnik P1,P2,P3;
+float Najveci;
+float a1,b1,a2,b2,a3,b3;
+printf("unesi stranice prvog pravokutnika:\n");
+scanf("%d %d", &a1, &b1);
+P1.setStr(a1,b1);
+printf("unesi stranice drugog pravokutnika:\n");
+scanf("%d %d", &a2, &b2);
+P2.setStr(a2,b2);
+printf("unesi stranice treceg pravokutnika:\n");
+scanf("%d %d", &a3, &b3);
+P3.setStr(a3,b3);
+Najveci=P1.Povrsina();
+if(P2.Povrsina () > Najveci)
+Najveci=P2.Povrsina ();
+if(P3.Povrsina ()> Najveci)
+Najveci=P3.Povrsina ();
+printf("najveci je: %.2f", Najveci);
+return 0;
+}
+
+

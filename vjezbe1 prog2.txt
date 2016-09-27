@@ -1,0 +1,259 @@
+#include <stdio.h>
+
+//struct automobil {
+//	char proizvodac[20];
+//	int snaga;
+//	int masa;
+//};
+//struct parking {
+//	int parkirno_mjesto;
+//	int uplaceno_sati;
+//	struct automobil tip_auta;
+//} parking[11];
+//
+//int main () {
+//	int i, n;
+//	float z;
+//	do {
+//		printf ("Unesite koliko ima parkiranih automobila: ");
+//		scanf ("%d", &n);
+//	} while (!(n>0 && n<10));
+//	printf ("Unesite podatke!\n");
+//	for (i=1;i<=n;i++) {
+//		printf ("Parkirno mjesto: ");
+//		scanf ("%d", &parking[i].parkirno_mjesto);
+//		printf ("Uplaceno sati: ");
+//		scanf ("%d", &parking[i].uplaceno_sati);
+//		printf ("Snaga: ");
+//		scanf ("%d", &parking[i].tip_auta.snaga);
+//		printf ("Masa: ");
+//		scanf ("%d", &parking[i].tip_auta.masa);
+//		printf ("Proizvodac: ");
+//		scanf ("%s", parking[i].tip_auta.proizvodac);
+//	}
+//	for (i=1;i<=n;i++) {
+//		z=(float)(parking[i].tip_auta.snaga)/(float)(parking[i].tip_auta.masa);
+//		if (z<0.2) {
+//			printf ("Parkirno mjesto: %d\n", parking[i].parkirno_mjesto);
+//			printf ("Uplaceno sati: %d\n", parking[i].uplaceno_sati);
+//			printf ("Snaga: %d\n", parking[i].tip_auta.snaga);
+//			printf ("Masa: %d\n",parking[i].tip_auta.masa);
+//			printf ("Proizvodac: %s\n", parking[i].tip_auta.proizvodac);
+//		}
+//	}
+//	return 0;
+//}
+
+//struct razred {
+//	char smjer[20];
+//	char ime_razrednik[20];
+//	char prezime_razrednik[20];
+//};
+//struct ucenik {
+//	float prosjek;
+//	int redni;
+//	char ime[20];
+//	char prezime[20];
+//	struct razred prviA;
+//} ucenik[40];
+//
+//int main () {
+//	int i, n;
+//	do {
+//		printf ("Unesite koliko je ucenika u razredu: ");
+//		scanf ("%d", &n);
+//	} while (!(n>10 && n<25));
+//	for (i=1;i<=n;i++) {
+//		printf ("Unesite podatke za %d. ucenika!\n", i);
+//		printf ("Ime: ");
+//		scanf ("%s", ucenik[i].ime);
+//		printf ("Prezime: ");
+//		scanf ("%s", ucenik[i].prezime);
+//		printf ("Prosjek: ");
+//		scanf ("%f", &ucenik[i].prosjek);
+//		printf ("Redni broj: ");
+//		scanf ("%d", &ucenik[i].redni);
+//		printf ("Smjer: ");
+//		scanf ("%s", ucenik[i].prviA.smjer);
+//		printf ("Ime razrednika: ");
+//		scanf ("%s", ucenik[i].prviA.ime_razrednik);
+//		printf ("Prezime razrednika: ");
+//		scanf ("%s", ucenik[i].prviA.prezime_razrednik);
+//	}
+//	return 0;
+//}
+
+/*struct tv {
+	int horiz;
+	int vert;
+	char proizvodac[20];
+	int cijena;
+} tv[10];
+
+int funkcija (int a);
+
+int main () {
+	int i, k;
+	for (i=1;i<=10;i++) {
+		printf ("Unesite podatke za %d. TV!\n", i);
+		printf ("Horizontalna rezolucija: ");
+		scanf ("%d", &tv[i].horiz);
+		printf ("Vertikalna rezolucija: ");
+		scanf ("%d", &tv[i].vert);
+		printf ("Proizvodac: ");
+		scanf ("%s", tv[i].proizvodac);
+		printf ("Cijena: ");
+		scanf ("%d", &tv[i].cijena);
+	}
+	for (i=1;i<=10;i++) {
+		printf ("%d. TV: \n", i);
+		printf ("Horizontalna rezolucija: %d\n", tv[i].horiz);
+		printf ("Vertikalna rezolucija: %d\n", tv[i].vert);
+		printf ("Prozivodac: %s\n", tv[i].proizvodac);
+		printf ("Cijena: %d\n", tv[i].cijena);
+		printf ("Postoji li jos TV-ova s istom cijenom?\n");
+		k=funkcija(tv[i].cijena);
+		if (k==1) {
+			printf ("Postoji!\n");
+		} else {
+			printf ("Ne postoji!\n");
+		}
+	}
+	return 0;
+}
+
+int funkcija (int a) {
+	int i, temp, br=0;
+	for (i=1;i<=10;i++) {
+		temp=a;
+		if (a==temp) {
+			br++;
+		}
+	}
+	if (br>0) {
+		return 1;
+	} else {
+		return 0;
+	}
+}*/
+
+//int main () {
+//	float p[14], u, zp=0, zd=0, *a=p;
+//	int i, n;
+//	do {
+//		printf ("Unesite koliko ce polje sadrzavati elemenata: ");
+//		scanf ("%d", &n);
+//	} while (!(n>2 && n<14));
+//	printf ("Unesite elemente polja: ");
+//	for (i=0;i<n;i++) {
+//		scanf ("%f", (a+i));
+//	}
+//	for (i=0;i<n/2;i++) {
+//		zp+=*(a+i);
+//	}
+//	for (i=n/2;i<n;i++) {
+//		zd+=*(a+i);
+//	}
+//	u=zp*zd;
+//	printf ("Produkt zbrojeva je: %f\n", u);
+//	return 0;
+//}
+
+//int najveci (char *a, int *b);
+//
+//int main () {
+//	char z[10], *p=z;
+//	int n, *r=&n, i, k;
+//	do {
+//		printf ("Unesite koliko ce polje imati znakova: ");
+//		scanf ("%d", r);
+//	} while (!(*r>3 && *r<10));
+//	printf ("Unesite elemente polja: ");
+//	for (i=0;i<*r;i++) {
+//		scanf ("%s", (p+i));
+//	}
+//	k=najveci (p, r);
+//	printf ("Najveca cjelobrojna vrijednost je: %d\n", k);
+//	return 0;
+//}
+//
+//int najveci (char *a, int *b) {
+//	int i, max=*a;
+//	for (i=0;i<*b;i++) {
+//		if (*(a+i)>max) {
+//			max=*(a+i);
+//		}
+//	}
+//	return max;
+//}
+
+//int duzina (char *a);
+//int najveci (char *a);
+//
+//int main () {
+//	char s[20], *p;
+//	int k, l;
+//	p=s;
+//	while (1) {
+//		printf ("Unesite string: ");
+//		scanf ("%s", p);
+//		k=duzina(p);
+//		l=najveci(p);
+//		printf ("Duzina stringa je %d, a najveca ASCII vrijednost je %d\n", k, l);
+//		if (k>20) 
+//			break;
+//	}
+//	return 0;
+//}
+//
+//int duzina (char *a) {
+//	int br=0;
+//	while (a[br]!='\0') {
+//		br++;
+//	}
+//	return br;
+//}
+//
+//int najveci (char *a) {
+//	int i=0, max=*a;
+//	while (a[i]!='\0') {
+//		if (*(a+i)>max) {
+//			max=*(a+i);
+//		}
+//		i++;
+//	}
+//	return max;
+//}
+
+//float najveci (float p[3][4]);
+//
+//int main () {
+//	int i, j;
+//	float a[3][4], k;
+//	printf ("Unesite elemente matrice:\n");
+//	for (i=0;i<3;i++) {
+//		for (j=0;j<4;j++) {
+//			scanf ("%f", &a[i][j]);
+//		}
+//	}
+//	for (i=0;i<3;i++) {
+//		for (j=0;j<4;j++) {
+//			printf ("%f\t", a[i][j]);
+//		}
+//		putchar ('\n');
+//	}
+//	k=najveci(a);
+//	printf ("Najveci broj u prvom retku matrice je: %f\n", k);
+//	return 0;
+//}
+//
+//float najveci (float p[3][4]) {
+//	int j;
+//	float max=p[0][0];
+//	for (j=0;j<4;j++) {
+//		if(p[0][j]>max) {
+//			max=p[0][j];
+//		}
+//	}
+//	return max;
+//}

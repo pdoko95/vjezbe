@@ -1,0 +1,35 @@
+//Unesi interval <a,b> i pomnozi sve brojeve unutar toga intervala
+
+#include <stdio.h>
+
+int mnozi(int x, int y)
+{
+	int i;
+	int rez=1;
+	if(y-x==0){printf("nema intervala");}
+	if(y-x==1){printf("unesite veci interval!"); return rez=0;}
+	if(y-x==2){
+		for(i=x;i<=y;i++){rez=i-1;
+		}
+		return rez;
+	}
+	if(y-x>2){
+		for(i=x+1;i<y;i++){
+			rez=rez*i;
+		}
+		return rez;
+	}
+	
+}
+int main ()
+{
+	int a,b;
+	int rezultat=0;
+	printf("unesi interval <a,b>:");
+	scanf("%d %d", &a, &b);
+	rezultat=mnozi(a,b);
+	printf("\nrezultat mnozenja brojeva u intervalu je: %d", rezultat);
+	
+	
+return 0;
+}

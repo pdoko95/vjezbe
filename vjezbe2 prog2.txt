@@ -1,0 +1,365 @@
+6.----------------------------------------------
+public class Bankovni_racun
+        {
+            private int broj_racuna;
+            private int stanje_racuna;
+            private double kamatna_stopa;
+            public void Izracunaj_kamatu(int x, int y, double k)
+            {
+                broj_racuna = x;
+                stanje_racuna = y;
+                kamatna_stopa = k;
+                double z= (k*y*0.01) + y;
+                Console.WriteLine("Uz {0} dolara na racunu i kamatnu stopu {1}% imat cete {2} novaca",y, k, z);
+            }
+        }
+        static void Main(string[] args)
+        {
+            Bankovni_racun novac = new Bankovni_racun();
+            novac.Izracunaj_kamatu(500, 30150, 13.5);
+        }
+5.--------------------------------------
+#include<stdio.h>
+void rekurzija(long int a)
+{
+	if(a/1000!=0)
+	{
+rekurzija(a/1000);
+	}
+	if(a<0) a=a*(-1);
+	if(a/1000!=0) printf(".");
+	printf("%d",a%1000); 
+	
+	
+}
+int main()
+{
+long int a;
+scanf("%ld",&a);
+rekurzija(a);
+return 0;
+}
+3.------------------------------------------
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
+int main()
+{
+	int p[100][100], i, j, k, brk = 0;
+	srand(time(NULL));
+	for (i = 0; i < 100; i++)
+	{
+		for (j = 0; j < 100; j++)
+		{
+			p[i][j] = rand() % 100 + 1;
+		}
+	}
+
+	printf("Odaberite broj:\n");
+	scanf_s("%d", &k);
+
+	for (i = 0; i < 100; i++)
+	{
+		for (j = 0; j < 100; j++)
+		{
+			brk++;
+			if (k == p[i][j])
+			{
+				printf("Broj je pronaden nakon %d. koraka.\n", brk);
+				i = 191;
+				break;
+			}
+		}
+	}
+	return 0;
+
+
+4.--------------------------------
+#include <stdio.h>
+#include <stdlib.h> 
+#include <time.h>
+
+int main()
+{
+	int p[100][100], i, j, n, k, t, donja, gornja, sred;
+	srand (time(NULL));
+
+	//random brojevi u matricu
+	for (i = 0; i < 100; i++)
+		for (j = 0; j < 100; j++)
+			p[i][j]=rand()%100+1;
+	
+	
+	for (i = 0; i < 100; i++){
+		n=rand()%100+1;
+		
+		//sort
+		for (j=0; j<99; j++){  
+			for (k=j+1; k<100; k++){ 
+				if ( p[i][j]>p[i][k] ) { 
+					t=p[i][j]; 
+					p[i][j]=p[i][k]; 
+					p[i][k]=t; 
+				} 
+			} 
+		}
+		
+		
+		//binarno pretrazivanje
+		t=0;
+		donja = 0;
+		gornja = 99;
+		
+		while (1)
+		{
+			sred = (gornja+donja)/2;
+			t++;
+			if (gornja<=donja) break;
+			if(p[i][sred]==n)
+				break;
+			else if (p[i][sred]>n)
+				gornja = sred-1;
+			else if (p[i][sred]<n)
+				donja = sred+1;
+			
+			}
+		if (t!=0)
+			printf ("Broj u %d. retku je pronaden u %d koraku!\n", i+1,t);
+		else
+			printf ("Broj nije pronanden u %d. retku!\n",i+1);
+	
+	}
+	
+		
+		
+	return 0;
+}
+2.-----------------------------------------
+#include <stdio.h>
+
+int main()
+{
+	int i, n, p[21], sr, min, sum=0;
+
+	FILE *f;
+	f = fopen("brojevi.dat", "w");
+	printf("Odaberite broj elemenata u polje:\n");
+	scanf_s("%d", &n);
+
+	for (i = 0; i < n; i++)
+	{
+		printf("Unesite %d. broj:\n", i);
+		scanf_s("%d", &p[i]);
+		fwrite(&p, sizeof(int), 1, f);
+	}
+	min = p[0];
+	fclose(f);
+	f = fopen("brojevi.dat", "r");
+	for (i = 0; i < n; i++)
+	{
+		fread(&p, sizeof(int), 1, f);
+		sum += p[i];
+		if (p[i] < min)
+		{
+			min = p[i];
+		}
+	}
+
+	sr = sum / n;
+
+	for (i = 0; i < n; i++)
+	{
+		fread(&p, sizeof(int), 1, f);
+		if (p[i] < (sr + min))
+		{
+			printf("%d", p[i]);
+		}
+	}
+
+	return 0;
+}
+1.-----------------------------------------
+#include <stdio.h>
+
+int main()
+{
+	int i;
+	FILE *p;
+	p = fopen("racunalo.dat", "w");
+	struct racunalo
+	{
+		char proizvodac[20];
+		char procesor[10];
+		int brzina;
+		char grafika[10];
+		int ram;
+		int hdd;
+	}x;
+
+	for (i = 0; i < 13; i++)
+	{
+		printf("Unesite elemente za %d. racunalo:\n", i + 1);
+		printf("Proizvodac:\n");
+		scanf_s("%s", x.proizvodac);
+		printf("Procesor:\n");
+		scanf_s("%s", x.procesor);
+		printf("Brzina:\n");
+		scanf_s("%d", &x.brzina);
+		printf("Grafika:\n");
+		scanf_s("%s", x.grafika);
+		printf("RAM:\n");
+		scanf_s("%d", &x.ram);
+		printf("HDD:\n");
+		scanf_s("%d", &x.hdd);
+		fwrite(&x, sizeof(struct racunalo), 1, p);
+	}
+
+	fclose(p);
+	p = fopen("racunalo.dat", "r");
+
+	for (i = 0; i < 13; i++)
+	{
+		fread(&x, sizeof(struct racunalo), 1, p);
+		if (x.proizvodac[0] == 'G' && x.brzina>3)
+		{
+			printf("Proizvodac: %s\nProcesor: %s\nBrzina: %d\nGrafika: %s\nRAM: %d\nHDD: %s", x.proizvodac, x.procesor, x.brzina, x.grafika, x.ram, x.hdd);
+		}
+	}
+
+	return 0;
+}
+
+----------------------------------------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+namespace Petar
+{
+    class Program
+    {
+        public class zarulja
+        {
+            public int stanje;
+            public zarulja()
+            {
+                Console.WriteLine("Defaultni konstruktor");
+            }
+            public void upali()
+            {
+                if (stanje == 1)
+                {
+                    Console.WriteLine("Zarulja je vec upaljena!\n");
+                    stanje = 1;
+                }
+                else
+                {
+                    Console.WriteLine("Upalili ste zarulju!\n");
+                    stanje = 1;
+                }
+            }
+            public void ugasi()
+            {
+                if (stanje == 0)
+                {
+                    Console.WriteLine("Zarulja je vec ugasena!\n");
+                    stanje = 0;
+                }
+                else
+                {
+                    Console.WriteLine("Ugasili ste zarulju!\n");
+                    stanje = 0;
+                }
+            }
+            public zarulja(int x)
+            {
+                Console.WriteLine("Parametarski konstruktor");
+                stanje = x;
+            }
+            static void Main(string[] args)
+            {
+                zarulja zaruljica = new zarulja();
+                zarulja zaruljica1 = new zarulja(1);
+                zaruljica1.ugasi();
+                zaruljica1.ugasi();
+                zaruljica1.upali();
+                zaruljica1.ugasi();
+                zaruljica1.upali();
+                zaruljica1.upali();
+            }
+        }
+    }
+}
+
+-----------------------------------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication16
+{
+    public class prepaid_kartica
+    {
+        public double iznos;
+        public void iz()
+        {
+            //defaultni
+        }
+        public void iz(double i)
+        {
+            iznos = i;//parametarski
+        }
+        public void nadoplati(double i)
+        {
+            Console.WriteLine("Nadoplatite racun sa {0} kuna.", i);
+            iznos += i;
+        }
+        public void ispis()
+        {
+            Console.WriteLine("Iznos na prepaid racunu je {0} kuna.", iznos);
+        }
+    }
+    public class tele2_kartica : prepaid_kartica
+    {
+        public double cijena;
+        public void cij()
+        {
+            //defaultni
+        }
+        public void cij(double c)
+        {
+            cijena = c;//parametarski
+            Console.WriteLine("Cijena SMS-a je {0}", cijena);
+        }
+        public void sms(double c)
+        {
+            Console.WriteLine("SMS poslan.");
+            iznos -= c;
+        }
+        public void ispis()
+        {
+            Console.WriteLine("Iznos na Tele2 racunu je {0} kuna.", iznos);
+        }
+        static void Main(string[] args)
+        {
+            prepaid_kartica prepaid1 = new prepaid_kartica();
+            prepaid1.iz(35.62);
+            prepaid1.ispis();
+            prepaid1.nadoplati(5);
+            prepaid1.ispis();
+            tele2_kartica tele2 = new tele2_kartica();
+            tele2.iz(15);
+            tele2.ispis();
+            tele2.nadoplati(3);
+            tele2.ispis();
+            tele2.cij(0.49);
+            tele2.sms(0.49);
+            tele2.sms(0.49);
+            tele2.ispis();
+            Console.ReadLine();
+        }
+    }
+}
