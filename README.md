@@ -1,2 +1,3 @@
 # vjezbe
 C++ zadatci
+Ovdje se mogu napisati neke izmjene...
